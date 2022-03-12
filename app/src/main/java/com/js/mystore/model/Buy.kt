@@ -1,0 +1,15 @@
+package com.js.mystore.model
+
+import androidx.room.Entity
+import androidx.room.PrimaryKey
+import java.util.*
+
+@Entity
+data class Buy(
+    @PrimaryKey(autoGenerate = true)
+    var buyId: Long? = 0,
+    var valueBuy: Double? = null,
+    var status: Boolean = true,
+    var updateAt: Date? = null,
+    var createdAt: Date? = null,
+)
