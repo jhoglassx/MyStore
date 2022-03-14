@@ -4,7 +4,7 @@ import com.js.mystore.data.dao.StoreDao
 import com.js.mystore.model.Company
 
 class CompanyRepositoryImpl(private val storeDao: StoreDao) : CompanyRepository {
-    override suspend fun getCompany(companyId: Int): Company {
+    override suspend fun getCompany(companyId: Long): Company {
         return storeDao.getCompany(companyId)
     }
 

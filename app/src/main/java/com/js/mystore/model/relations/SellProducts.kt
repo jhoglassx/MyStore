@@ -8,12 +8,12 @@ import com.js.mystore.model.ProductSell
 import com.js.mystore.model.Sell
 
 data class SellProducts(
-    @Embedded val productSell: Sell,
+    @Embedded val sell: Sell,
 
     @Relation(
         parentColumn = "sellId",
-        entityColumn = "productId",
+        entityColumn = "sellId",
         associateBy = Junction(ProductSell::class)
     )
-    val products: List<Product>
+    val sells: List<ProductSell>
 )

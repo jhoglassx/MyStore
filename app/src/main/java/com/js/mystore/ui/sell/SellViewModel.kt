@@ -7,8 +7,8 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.js.mystore.model.Product
 import com.js.mystore.model.ProductSell
-import com.js.mystore.model.Sell
 import com.js.mystore.model.ProductsList
+import com.js.mystore.model.Sell
 import com.js.mystore.repository.ProductRepository
 import com.js.mystore.repository.ProductSellRepository
 import com.js.mystore.repository.SellRepository
@@ -34,21 +34,25 @@ class SellViewModel(private val repoSell: SellRepository, private val repoProduc
 
     fun setSale(sell: Sell) {
         viewModelScope.launch {
-            repoSell.setSale(sell)
+            repoSell.setSell(sell)
         }
     }
     // Insere dados iniciais para teste
     fun setProductSale(productSell: ProductSell) {
         viewModelScope.launch {
-            repoProductSell.setProductSale(productSell)
+            repoProductSell.setProductSell(productSell)
         }
     }
 
     fun getProduct(filter: String) {
         viewModelScope.launch {
-            _productLiveData.value = repoProduct.getProductAll(1, true).filter {
-                it.name?.contains(filter, true) ?: true
-            }
+            _productLiveData.value = repoProduct.getProductAll(1, true)
+                .filter {
+                    it.name?.contains(filter, true) ?: true
+                }
+                .sortedBy {
+                    it.name
+                }
         }
     }
 
@@ -70,7 +74,7 @@ class SellViewModel(private val repoSell: SellRepository, private val repoProduc
         val sale = Sell(null, sellTotalLiveData.value, true, date(), date())
 
         viewModelScope.launch {
-            _saleIdLiveData.value = repoSell.setSale(sale)
+            _saleIdLiveData.value = repoSell.setSell(sale)
             Log.i("INSERT_ID", "Inserted ID is: $saleIdLiveData.value ")
         }
     }
@@ -80,7 +84,7 @@ class SellViewModel(private val repoSell: SellRepository, private val repoProduc
         viewModelScope.launch {
             list.forEach { item ->
                 val product = ProductSell(item.productId, saleId, item.qtd, item.price, true, date(), date())
-                repoProductSell.setProductSale(product)
+                repoProductSell.setProductSell(product)
                 Log.e("ITEM", "$saleIdLiveData $item.toString()")
             }.also {
                 _listSellLiveData.value = listOf()

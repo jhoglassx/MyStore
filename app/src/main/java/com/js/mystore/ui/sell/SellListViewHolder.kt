@@ -6,12 +6,6 @@ import com.js.mystore.model.ProductsList
 
 class SellListViewHolder(private val binding: ListItemBinding, listener: SellListAdapter.OnItemClickListener) : RecyclerView.ViewHolder(binding.root) {
 
-    init {
-        binding.root.setOnClickListener {
-            listener.onItemClick(adapterPosition)
-        }
-    }
-
     fun bind(sell: ProductsList) = with(binding.root) {
         binding.txtItemId.text = sell.productId.toString()
         binding.txtItemName.text = sell.productName.toString()

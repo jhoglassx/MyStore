@@ -7,7 +7,7 @@ import java.util.*
 @Entity
 data class Product(
     @PrimaryKey(autoGenerate = true)
-    var productId: Long = 0,
+    var productId: Long? = 0,
     var companyId: Long = 0,
     var name: String? = null,
     var description: String? = null,

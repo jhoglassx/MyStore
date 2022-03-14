@@ -4,8 +4,12 @@ import com.js.mystore.data.dao.StoreDao
 import com.js.mystore.model.Buy
 
 class BuyRepositoryImpl(private val storeDao: StoreDao) : BuyRepository {
-    override suspend fun getBuy(buyId: Int): Buy {
+    override suspend fun getBuy(buyId: Long): Buy {
         return storeDao.getBuy(buyId)
+    }
+
+    override suspend fun getBuyAll(): List<Buy> {
+        return storeDao.getBuyAll()
     }
 
     override suspend fun setBuy(buy: Buy): Long {

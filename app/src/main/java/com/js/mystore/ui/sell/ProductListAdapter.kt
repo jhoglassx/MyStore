@@ -38,7 +38,7 @@ class ProductListAdapter(private val products: List<Product>) : RecyclerView.Ada
         }
 
         holder.itemView.setOnClickListener {
-            listener.onItemClick(product.productId, product.name!!)
+            listener.onItemClick(product.productId!!, product.name!!)
             selectedPosition = position
             notifyDataSetChanged()
         }

@@ -15,7 +15,7 @@ interface StoreDao {
 
     @Transaction
     @Query("SELECT * FROM Company WHERE companyId = :companyId")
-    suspend fun getCompany(companyId: Int): Company
+    suspend fun getCompany(companyId: Long): Company
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertProduct(product: Product)
@@ -24,10 +24,10 @@ interface StoreDao {
     suspend fun updateProduct(product: Product)
 
     @Query("SELECT * FROM Product WHERE productId = :productId")
-    suspend fun getProduct(productId: Int): Product
+    suspend fun getProduct(productId: Long): Product
 
     @Query("SELECT * FROM Product WHERE companyId =:companyId and status = :status")
-    suspend fun getProductAll(companyId: Int, status: Boolean): List<Product>
+    suspend fun getProductAll(companyId: Long, status: Boolean): List<Product>
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertSale(productSell: Sell): Long
@@ -36,8 +36,12 @@ interface StoreDao {
     suspend fun updateSale(productSell: Sell)
 
     @Transaction
-    @Query("SELECT * FROM Sell WHERE sellId = :saleId")
-    suspend fun getSale(saleId: Int): Sell
+    @Query("SELECT * FROM Sell WHERE sellId = :sellId")
+    suspend fun getSell(sellId: Long): Sell
+
+    @Transaction
+    @Query("SELECT * FROM Sell ")
+    suspend fun getSellAll(): List<Sell>
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertBuy(buy: Buy): Long
@@ -46,16 +50,28 @@ interface StoreDao {
     suspend fun updateBuy(buy: Buy)
 
     @Transaction
-    @Query("SELECT * FROM Buy WHERE buyId = :purchaseId")
-    suspend fun getBuy(purchaseId: Int): Buy
+    @Query("SELECT * FROM Buy WHERE buyId = :buyId")
+    suspend fun getBuy(buyId: Long): Buy
+
+    @Transaction
+    @Query("SELECT * FROM Buy ")
+    suspend fun getBuyAll(): List<Buy>
 
     @Transaction
     @Query("SELECT * FROM Company WHERE companyId = :companyId")
-    suspend fun getProductsOfCompany(companyId: Int): List<CompanyProducts>
+    suspend fun getProductsOfCompany(companyId: Long): List<CompanyProducts>
 
     @Transaction
     @Query("SELECT * FROM Product WHERE productId = :productId")
-    suspend fun getSalesOfProduct(productId: Int): List<ProductSells>
+    suspend fun getSellsOfProduct(productId: Int): List<ProductSells>
+
+    @Transaction
+    @Query("SELECT * FROM Sell")
+    suspend fun getSellsOfProductAll(): List<SellProducts>
+
+    @Transaction
+    @Query("SELECT * FROM Product")
+    suspend fun getProductOfSellsAll(): List<ProductSells>
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertProductSale(productSell: ProductSell): Long
@@ -65,7 +81,7 @@ interface StoreDao {
 
     @Transaction
     @Query("SELECT * FROM ProductSell WHERE productId = :productId")
-    suspend fun getProductSale(productId: Int): ProductSell
+    suspend fun getProductSale(productId: Long): ProductSell
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertProductPurchase(productBuy: ProductBuy)
@@ -75,5 +91,5 @@ interface StoreDao {
 
     @Transaction
     @Query("SELECT * FROM ProductBuy WHERE productId = :productId")
-    suspend fun getProductPurchase(productId: Int): ProductBuy
+    suspend fun getProductPurchase(productId: Long): ProductBuy
 }

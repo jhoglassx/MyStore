@@ -1,6 +1,5 @@
 package com.js.mystore.ui.buy
 
-
 import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
@@ -13,7 +12,7 @@ import com.js.mystore.repository.ProductRepository
 import com.js.mystore.utils.DateUtils.date
 import kotlinx.coroutines.launch
 
-class BuyViewModel(private val buyRepo: BuyRepository,private val buyProdRepo: ProductBuyRepository,private val prodRepo: ProductRepository) : ViewModel() {
+class BuyViewModel(private val buyRepo: BuyRepository, private val buyProdRepo: ProductBuyRepository, private val prodRepo: ProductRepository) : ViewModel() {
 
     private var _saleLiveData = MutableLiveData<Sell>()
     val sellLiveData: LiveData<Sell> = _saleLiveData
@@ -44,9 +43,13 @@ class BuyViewModel(private val buyRepo: BuyRepository,private val buyProdRepo: P
 
     fun getProduct(filter: String) {
         viewModelScope.launch {
-            _productLiveData.value = prodRepo.getProductAll(1, true).filter {
-                it.name?.contains(filter, true) ?: true
-            }
+            _productLiveData.value = prodRepo.getProductAll(1, true)
+                .filter {
+                    it.name?.contains(filter, true) ?: true
+                }
+                .sortedBy {
+                    it.name
+                }
         }
     }
 

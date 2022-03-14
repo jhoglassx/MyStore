@@ -6,6 +6,25 @@
     android:layout_height="match_parent"
     tools:context=".ui.SellActivity">
 
+    <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/buyTop"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <com.google.android.material.appbar.MaterialToolbar
+            android:id="@+id/buyToolbar"
+            style="@style/Widget.MaterialComponents.Toolbar.Primary"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="?attr/colorPrimary"
+            android:minHeight="?attr/actionBarSize"
+            app:title="Lançamento de Compra"
+            app:navigationIcon="@drawable/ic_back"/>
+
+    </com.google.android.material.appbar.AppBarLayout>
     <TextView
         android:id="@+id/txt_qtd_title"
         android:layout_width="wrap_content"
@@ -56,7 +75,7 @@
         app:layout_constraintEnd_toStartOf="@+id/txt_estoque"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/buyTop"
         android:drawableStart="@drawable/ic_search"/>
 
     <TextView

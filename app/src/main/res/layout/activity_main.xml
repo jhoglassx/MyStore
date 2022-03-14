@@ -5,20 +5,164 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+    <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/mainTop"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <com.google.android.material.appbar.MaterialToolbar
+            android:id="@+id/mainToolbar"
+            style="@style/Widget.MaterialComponents.Toolbar.Primary"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="?attr/colorPrimary"
+            android:minHeight="?attr/actionBarSize"
+            app:title="@string/app_name"
+            app:menu="@menu/main_bar" />
+
+    </com.google.android.material.appbar.AppBarLayout>
+
     <com.google.android.material.card.MaterialCardView
         android:id="@+id/cardResume"
         android:layout_width="0dp"
-        android:layout_height="200dp"
+        android:layout_height="wrap_content"
+        android:layout_margin="5dp"
         android:backgroundTint="@color/black"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@id/mainTop">
 
-    <androidx.fragment.app.FragmentContainerView
-        android:id="@+id/fragmentContainerView"
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:id="@+id/txt_sell_title2"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:background="@color/white"
+                android:backgroundTint="@color/white"
+                android:paddingStart="4dp"
+                android:paddingLeft="2dp"
+                android:paddingTop="2dp"
+                android:paddingEnd="4dp"
+                android:paddingRight="2dp"
+                android:paddingBottom="2dp"
+                android:shadowColor="#D2D2D2"
+                android:text="VENDAS"
+                android:textAlignment="center"
+                app:layout_constraintEnd_toEndOf="@+id/txt_sell"
+                app:layout_constraintStart_toStartOf="@+id/txt_sell"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/txt_buy"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="5dp"
+                android:background="@color/white"
+                android:backgroundTint="@color/white"
+                android:paddingStart="8dp"
+                android:paddingTop="4dp"
+                android:paddingEnd="8dp"
+                android:paddingBottom="4dp"
+                android:text="00,00"
+                android:textSize="26sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/txt_sell_title" />
+
+            <TextView
+                android:id="@+id/txt_sell"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="5dp"
+                android:background="@color/white"
+                android:backgroundTint="@color/white"
+                android:paddingStart="8dp"
+                android:paddingTop="4dp"
+                android:paddingEnd="8dp"
+                android:paddingBottom="4dp"
+                android:text="00,00"
+                android:textSize="26sp"
+                app:layout_constraintStart_toEndOf="@+id/txt_buy"
+                app:layout_constraintTop_toBottomOf="@+id/txt_sell_title2" />
+
+            <TextView
+                android:id="@+id/txt_totalValue"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:layout_marginEnd="10dp"
+                android:layout_marginBottom="10dp"
+                android:background="@color/white"
+                android:backgroundTint="@color/white"
+                android:paddingStart="8dp"
+                android:paddingTop="4dp"
+                android:paddingEnd="8dp"
+                android:paddingBottom="4dp"
+                android:text="00.00"
+                android:textSize="26sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/txt_sell_title3"
+                app:layout_constraintVertical_bias="0.0" />
+
+            <TextView
+                android:id="@+id/txt_sell_title"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:background="@color/white"
+                android:backgroundTint="@color/white"
+                android:paddingStart="4dp"
+                android:paddingLeft="2dp"
+                android:paddingTop="2dp"
+                android:paddingEnd="4dp"
+                android:paddingRight="2dp"
+                android:paddingBottom="2dp"
+                android:shadowColor="#D2D2D2"
+                android:text="COMPRAS"
+                android:textAlignment="center"
+                app:layout_constraintEnd_toEndOf="@+id/txt_buy"
+                app:layout_constraintStart_toStartOf="@+id/txt_buy"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/txt_sell_title3"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:background="@color/white"
+                android:backgroundTint="@color/white"
+                android:paddingStart="4dp"
+                android:paddingLeft="2dp"
+                android:paddingTop="2dp"
+                android:paddingEnd="4dp"
+                android:paddingRight="2dp"
+                android:paddingBottom="2dp"
+                android:shadowColor="#D2D2D2"
+                android:text="TOTAL"
+                android:textAlignment="center"
+                app:layout_constraintEnd_toEndOf="@+id/txt_totalValue"
+                app:layout_constraintStart_toStartOf="@+id/txt_totalValue"
+                app:layout_constraintTop_toTopOf="parent" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </com.google.android.material.card.MaterialCardView>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerView_main"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:background="#00ffcc"
+        android:layout_margin="5dp"
+        android:paddingHorizontal="10dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -62,4 +206,17 @@
         app:icon="@android:drawable/ic_menu_add"
         app:layout_constraintBottom_toTopOf="@+id/btn_purchase"
         app:layout_constraintEnd_toEndOf="@+id/btn_purchase" />
+
+    <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
+        android:id="@+id/btn_addProduct"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="10dp"
+        android:clickable="true"
+        android:focusable="true"
+        android:text="Add Produto"
+        android:visibility="invisible"
+        app:icon="@android:drawable/ic_menu_add"
+        app:layout_constraintBottom_toTopOf="@+id/btn_sale"
+        app:layout_constraintEnd_toEndOf="@+id/btn_sale" />
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -5,11 +5,13 @@ import android.os.Bundle
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.isVisible
+import com.js.mystore.R
 import com.js.mystore.databinding.ActivityMainBinding
 import com.js.mystore.model.*
 import com.js.mystore.ui.buy.BuyViewModel
+import com.js.mystore.ui.main.MainSellListAdapter
 import com.js.mystore.ui.main.MainViewModel
-import com.js.mystore.ui.main.ProductViewModel
+import com.js.mystore.ui.product.ProductViewModel
 import com.js.mystore.ui.sell.SellViewModel
 import com.js.mystore.utils.DateUtils
 import com.js.mystore.utils.DateUtils.date
@@ -30,13 +32,18 @@ class MainActivity : AppCompatActivity() {
         _binding = ActivityMainBinding.inflate(layoutInflater, null, false)
         setContentView(binding.root)
 
+        var totalBuy = 0.0
+        var totalSell = 0.0
+
         binding.btnAdd.setOnClickListener {
             if (binding.btnPurchase.isVisible) {
                 binding.btnPurchase.visibility = View.INVISIBLE
                 binding.btnSale.visibility = View.INVISIBLE
+                binding.btnAddProduct.visibility = View.INVISIBLE
             } else {
                 binding.btnPurchase.visibility = View.VISIBLE
                 binding.btnSale.visibility = View.VISIBLE
+                binding.btnAddProduct.visibility = View.VISIBLE
             }
         }
 
@@ -50,15 +57,46 @@ class MainActivity : AppCompatActivity() {
             view.context.startActivity(intent)
         }
 
+        binding.btnAddProduct.setOnClickListener { view ->
+            val intent = Intent(view.context, ProductActivity::class.java)
+            view.context.startActivity(intent)
+        }
+
+        mainViewModel.listSellProducts.observe(this) { list ->
+            binding.recyclerViewMain.adapter = MainSellListAdapter(list)
+        }
+
+        mainViewModel.buyTotal.observe(this) {
+            totalBuy = it
+            binding.txtBuy.text = totalBuy.toString().replace('.', ',')
+            mainViewModel.getSaldoBuyAndSell(totalBuy, totalSell)
+        }
+
+        mainViewModel.sellTotal.observe(this) {
+            totalSell = it
+            binding.txtSell.text = totalSell.toString().replace('.', ',')
+            mainViewModel.getSaldoBuyAndSell(totalBuy, totalSell)
+        }
+
+        mainViewModel.buyAndSellTotal.observe(this) {
+            binding.txtTotalValue.text = it.toString().replace('.', ',')
+        }
+
+        mainViewModel.getSellProduct()
+        mainViewModel.getBuy()
+        mainViewModel.getSell()
+
+        val totalBuyAndSell = totalBuy - totalSell
+
         val companyMock = listOf<Company>(
             Company(1, "Primeira Empresa", true, DateUtils.date(), DateUtils.date())
         )
 
         val product = listOf(
-            Product(1, 1, "Camisa Azul", "Camisa azul com manga curta e desenho na frente", true, date(), date()),
-            Product(2, 1, "Camisa Preta", "Camisa preta com manga curta e desenho na frente", true, date(), date()),
-            Product(3, 1, "Camisa Bege", "Camisa bege com manga curta e desenho na frente e atrás", true, date(), date()),
-            Product(4, 1, "Camisa Vermelha", "Camisa vermelha com manga curta e desenho na frente e atrás", true, date(), date())
+            listOf("Camisa Azul", "Camisa azul com manga curta e desenho na frente"),
+            listOf("Camisa Preta", "Camisa preta com manga curta e desenho na frente"),
+            listOf("Camisa Bege", "Camisa bege com manga curta e desenho na frente e atrás"),
+            listOf("Camisa Vermelha", "Camisa vermelha com manga curta e desenho na frente e atrás")
         )
 
         val purchase = listOf(
@@ -94,16 +132,19 @@ class MainActivity : AppCompatActivity() {
         )
 
         companyMock.forEach { mainViewModel.setCompany(it) }
-        product.forEach { productViewModel.setProduct(it) }
+        // product.forEach { productViewModel.setProduct(it[0], it[1]) }
         purchase.forEach { buyViewModel.setBuy(it) }
         productPurchase.forEach { buyViewModel.setProductBuy(it) }
         productSale.forEach { sellViewModel.setProductSale(it) }
         sale.forEach { sellViewModel.setSale(it) }
 
-        mainViewModel.getCompany(1)
-
-        mainViewModel.companyLiveData.observe(this) {
-            it
+        binding.mainToolbar.setOnMenuItemClickListener { menuItem ->
+            when (menuItem.itemId) {
+                R.id.more -> {
+                    true
+                }
+                else -> false
+            }
         }
     }
 }

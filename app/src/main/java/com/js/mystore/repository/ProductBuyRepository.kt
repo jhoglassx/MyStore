@@ -4,7 +4,7 @@ import com.js.mystore.model.ProductBuy
 
 interface ProductBuyRepository {
 
-    suspend fun getProductBuy(buyId: Int): ProductBuy
+    suspend fun getProductBuy(buyId: Long): ProductBuy
     suspend fun setProductBuy(buyBuy: ProductBuy)
     suspend fun updateProductBuy(productBuy: ProductBuy)
     suspend fun deleteProductBuy(productBuy: ProductBuy)

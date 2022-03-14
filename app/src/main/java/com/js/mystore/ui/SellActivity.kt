@@ -1,5 +1,6 @@
 package com.js.mystore.ui
 
+import android.content.Intent
 import android.os.Bundle
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
@@ -84,6 +85,11 @@ class SellActivity : AppCompatActivity() {
             } else {
                 Toast.makeText(this@SellActivity, "Não tem Items na lista", Toast.LENGTH_LONG).show()
             }
+        }
+
+        binding.sellToolbar.setNavigationOnClickListener { view ->
+            val intent = Intent(view.context, MainActivity::class.java)
+            view.context.startActivity(intent)
         }
     }
 }

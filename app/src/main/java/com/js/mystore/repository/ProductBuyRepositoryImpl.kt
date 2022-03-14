@@ -4,7 +4,7 @@ import com.js.mystore.data.dao.StoreDao
 import com.js.mystore.model.ProductBuy
 
 class ProductBuyRepositoryImpl(private val storeDao: StoreDao) : ProductBuyRepository {
-    override suspend fun getProductBuy(buyId: Int): ProductBuy {
+    override suspend fun getProductBuy(buyId: Long): ProductBuy {
         return storeDao.getProductPurchase(buyId)
     }
 

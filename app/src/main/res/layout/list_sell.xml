@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/saleCard"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    app:cardCornerRadius="0dp"
+    android:layout_marginTop="5dp"
+    >
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <TextView
+            android:id="@+id/txt_item_id"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="5dp"
+            android:text="Item"
+            app:layout_constraintStart_toEndOf="@+id/txt_tralha"
+            app:layout_constraintTop_toTopOf="@+id/txt_tralha" />
+
+        <TextView
+            android:id="@+id/txt_item_price_value"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:text="99,99"
+            app:layout_constraintBottom_toBottomOf="@+id/txt_Item_price_title"
+            app:layout_constraintStart_toEndOf="@+id/txt_Item_price_title"
+            app:layout_constraintTop_toTopOf="@+id/txt_Item_price_title"
+            app:layout_constraintVertical_bias="1.0" />
+
+        <TextView
+            android:id="@+id/txt_Item_price_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="50dp"
+            android:text="Valor"
+            app:layout_constraintBottom_toBottomOf="@+id/txt_item_qtd_value"
+            app:layout_constraintStart_toEndOf="@+id/txt_item_qtd_value"
+            app:layout_constraintTop_toTopOf="@+id/txt_item_qtd_value" />
+
+        <TextView
+            android:id="@+id/txt_item_qtd_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="5dp"
+            android:text="Quantidade"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="@+id/txt_tralha"
+            app:layout_constraintTop_toBottomOf="@+id/txt_item_id" />
+
+        <TextView
+            android:id="@+id/txt_item_qtd_value"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:text="99"
+            app:layout_constraintBottom_toBottomOf="@+id/txt_item_qtd_title"
+            app:layout_constraintStart_toEndOf="@+id/txt_item_qtd_title"
+            app:layout_constraintTop_toTopOf="@+id/txt_item_qtd_title" />
+
+        <TextView
+            android:id="@+id/txt_tralha"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:text="#"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</com.google.android.material.card.MaterialCardView>

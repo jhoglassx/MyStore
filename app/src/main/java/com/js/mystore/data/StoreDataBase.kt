@@ -23,7 +23,7 @@ import com.js.mystore.utils.DateUtils
         ProductBuy::class,
         ProductSell::class
     ],
-    version = 6
+    version = 7
 )
 @TypeConverters(DateUtils::class)
 abstract class StoreDataBase : RoomDatabase() {

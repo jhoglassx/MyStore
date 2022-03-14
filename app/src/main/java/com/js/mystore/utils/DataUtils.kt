@@ -3,7 +3,7 @@ package com.js.mystore.utils
 import androidx.room.TypeConverter
 import java.time.ZoneId
 import java.time.ZonedDateTime
-import java.util.*
+import java.util.Date
 
 object DateUtils {
     @TypeConverter
