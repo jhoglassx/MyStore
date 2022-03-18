@@ -49,12 +49,13 @@
                 android:layout_marginTop="5dp"
                 android:layout_marginEnd="5dp"
                 android:ems="10"
-                android:hint="Nome do produto"
+                android:hint="@string/nome_do_produto"
                 android:inputType="text"
                 android:textColor="@color/white"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintTop_toTopOf="parent"
+                android:autofillHints="0" />
 
             <EditText
                 android:id="@+id/txt_productDescription"
@@ -63,19 +64,20 @@
                 android:layout_marginTop="5dp"
                 android:ems="10"
                 android:gravity="start|top"
-                android:hint="Descrição do produto"
+                android:hint="@string/descri_o_do_produto"
                 android:textColor="@color/white"
                 android:inputType="textMultiLine|text"
                 app:layout_constraintEnd_toEndOf="@id/txt_productName"
                 app:layout_constraintStart_toStartOf="@id/txt_productName"
-                app:layout_constraintTop_toBottomOf="@id/txt_productName" />
+                app:layout_constraintTop_toBottomOf="@id/txt_productName"
+                android:autofillHints="0" />
 
             <Button
                 android:id="@+id/btn_addProduct"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="5dp"
-                android:text="Add Produto"
+                android:text="@string/adcionar"
                 app:layout_constraintEnd_toEndOf="@id/txt_productDescription"
                 app:layout_constraintTop_toBottomOf="@id/txt_productDescription" />
         </androidx.constraintlayout.widget.ConstraintLayout>

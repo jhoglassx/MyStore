@@ -45,7 +45,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textSize="18sp"
-                android:text="Quantidade"
+                android:text="@string/quantidade"
                 android:textColor="@color/white"
                 app:layout_constraintBottom_toBottomOf="@id/txt_qtd_value"
                 app:layout_constraintStart_toStartOf="@id/txt_productSearch"
@@ -61,10 +61,11 @@
                 android:paddingVertical="4dp"
                 android:inputType="number"
                 android:textSize="18sp"
-                android:hint="0"
+                android:hint="@string/zero_value"
                 android:textColor="@color/white"
                 app:layout_constraintStart_toEndOf="@id/txt_qtd_title"
-                app:layout_constraintTop_toBottomOf="@id/list_products" />
+                app:layout_constraintTop_toBottomOf="@id/list_products"
+                android:autofillHints="0" />
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/list_products"
@@ -87,7 +88,7 @@
                 android:layout_marginEnd="10dp"
                 android:background="@null"
                 android:drawableStart="@drawable/ic_search"
-                android:hint="Buscar Produto"
+                android:hint="@string/buscar_produto"
                 android:textColor="@color/white"
                 android:padding="4dp"
                 android:textSize="18sp"
@@ -102,7 +103,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="20dp"
                 android:textSize="18sp"
-                android:text="Valor"
+                android:text="@string/valor"
                 android:textColor="@color/white"
                 app:layout_constraintBottom_toBottomOf="@id/txt_qtd_value"
                 app:layout_constraintStart_toEndOf="@id/txt_qtd_value"
@@ -117,18 +118,19 @@
                 android:paddingHorizontal="4dp"
                 android:paddingVertical="4dp"
                 android:textSize="18sp"
-                android:hint="00,00"
+                android:hint="@string/value_00_00"
                 android:textColor="@color/white"
                 android:digits="0123456789,"
                 app:layout_constraintBottom_toBottomOf="@id/txt_price_title"
                 app:layout_constraintStart_toEndOf="@id/txt_price_title"
-                app:layout_constraintTop_toTopOf="@id/txt_price_title" />
+                app:layout_constraintTop_toTopOf="@id/txt_price_title"
+                android:autofillHints="0" />
 
             <Button
                 android:id="@+id/btnAddSale"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Adcionar"
+                android:text="@string/adcionar"
                 app:layout_constraintBottom_toBottomOf="@+id/txt_price_value"
                 app:layout_constraintEnd_toEndOf="@+id/list_products"
                 app:layout_constraintHorizontal_bias="1.0"
@@ -141,7 +143,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="5dp"
                 android:padding="4sp"
-                android:text="Estoque"
+                android:text="@string/estoque"
                 android:textColor="@color/white"
                 android:textSize="16sp"
                 app:layout_constraintBottom_toBottomOf="@+id/txt_productSearch"
@@ -170,7 +172,7 @@
         android:id="@+id/btn_sale_save"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:text="Salvar"
+        android:text="@string/save"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="@id/recyclerView" />
 
@@ -180,7 +182,7 @@
         android:layout_height="wrap_content"
         android:layout_marginBottom="10dp"
         android:textSize="20sp"
-        android:text="00,00"
+        android:text="@string/value_00_00"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="@+id/recyclerView" />
 </androidx.constraintlayout.widget.ConstraintLayout>
