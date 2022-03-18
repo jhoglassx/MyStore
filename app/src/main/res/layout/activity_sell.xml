@@ -25,107 +25,136 @@
             app:navigationIcon="@drawable/ic_back"/>
 
     </com.google.android.material.appbar.AppBarLayout>
-    <TextView
-        android:id="@+id/txt_qtd_title"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textSize="18sp"
-        android:text="Quantidade"
-        app:layout_constraintBottom_toBottomOf="@id/txt_qtd_value"
-        app:layout_constraintStart_toStartOf="@id/txt_productSearch"
-        app:layout_constraintTop_toTopOf="@id/txt_qtd_value" />
-
-    <EditText
-        android:id="@+id/txt_qtd_value"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="12dp"
-        android:layout_marginTop="10dp"
-        android:paddingHorizontal="4dp"
-        android:paddingVertical="4dp"
-        android:inputType="number"
-        android:textSize="18sp"
-        android:hint="0"
-        app:layout_constraintStart_toEndOf="@id/txt_qtd_title"
-        app:layout_constraintTop_toBottomOf="@id/list_products" />
-
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/list_products"
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/cardResume"
         android:layout_width="0dp"
-        android:layout_height="100dp"
-        android:layout_marginTop="5dp"
-        android:layout_marginEnd="10dp"
-        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+        android:layout_height="wrap_content"
+        android:layout_margin="5dp"
+        android:backgroundTint="@color/card_background"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="@id/txt_productSearch"
-        app:layout_constraintTop_toBottomOf="@id/txt_productSearch"
-        tools:listitem="@layout/list_products_simple" />
-
-    <EditText
-        android:id="@+id/txt_productSearch"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="10dp"
-        android:layout_marginTop="10dp"
-        android:layout_marginEnd="10dp"
-        android:padding="4dp"
-        android:textSize="18sp"
-        android:hint="Buscar Produto"
-        android:background="@null"
-        app:layout_constraintEnd_toStartOf="@+id/txt_estoque"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/sellTop"
-        android:drawableStart="@drawable/ic_search"/>
+        app:layout_constraintTop_toBottomOf="@+id/sellTop">
 
-    <TextView
-        android:id="@+id/txt_price_title"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="50dp"
-        android:textSize="18sp"
-        android:text="Valor"
-        app:layout_constraintBottom_toBottomOf="@id/txt_qtd_value"
-        app:layout_constraintStart_toEndOf="@id/txt_qtd_value"
-        app:layout_constraintTop_toTopOf="@id/txt_qtd_value" />
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
 
-    <EditText
-        android:id="@+id/txt_price_value"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="10dp"
-        android:inputType="numberDecimal"
-        android:paddingHorizontal="4dp"
-        android:paddingVertical="4dp"
-        android:textSize="18sp"
-        android:hint="00,00"
-        android:digits="0123456789,"
-        app:layout_constraintBottom_toBottomOf="@id/txt_price_title"
-        app:layout_constraintStart_toEndOf="@id/txt_price_title"
-        app:layout_constraintTop_toTopOf="@id/txt_price_title" />
+            <TextView
+                android:id="@+id/txt_qtd_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="18sp"
+                android:text="Quantidade"
+                app:layout_constraintBottom_toBottomOf="@id/txt_qtd_value"
+                app:layout_constraintStart_toStartOf="@id/txt_productSearch"
+                app:layout_constraintTop_toTopOf="@id/txt_qtd_value" />
 
-    <Button
-        android:id="@+id/btnAddSale"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Adcionar"
-        app:layout_constraintEnd_toEndOf="@id/list_products"
-        app:layout_constraintTop_toBottomOf="@id/txt_price_value" />
+            <EditText
+                android:id="@+id/txt_qtd_value"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="12dp"
+                android:layout_marginTop="10dp"
+                android:paddingHorizontal="4dp"
+                android:paddingVertical="4dp"
+                android:inputType="number"
+                android:textSize="18sp"
+                android:hint="0"
+                app:layout_constraintStart_toEndOf="@id/txt_qtd_title"
+                app:layout_constraintTop_toBottomOf="@id/list_products" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/list_products"
+                android:layout_width="0dp"
+                android:layout_height="100dp"
+                android:layout_margin="5dp"
+                android:background="@color/card_background"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/txt_productSearch"
+                tools:listitem="@layout/list_products_simple" />
+
+            <EditText
+                android:id="@+id/txt_productSearch"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="5dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginEnd="10dp"
+                android:background="@null"
+                android:drawableStart="@drawable/ic_search"
+                android:hint="Buscar Produto"
+                android:padding="4dp"
+                android:textSize="18sp"
+                app:layout_constraintEnd_toStartOf="@+id/txt_estoque"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/txt_price_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:textSize="18sp"
+                android:text="Valor"
+                app:layout_constraintBottom_toBottomOf="@id/txt_qtd_value"
+                app:layout_constraintStart_toEndOf="@id/txt_qtd_value"
+                app:layout_constraintTop_toTopOf="@id/txt_qtd_value" />
+
+            <EditText
+                android:id="@+id/txt_price_value"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:inputType="numberDecimal"
+                android:paddingHorizontal="4dp"
+                android:paddingVertical="4dp"
+                android:textSize="18sp"
+                android:hint="00,00"
+                android:digits="0123456789,"
+                app:layout_constraintBottom_toBottomOf="@id/txt_price_title"
+                app:layout_constraintStart_toEndOf="@id/txt_price_title"
+                app:layout_constraintTop_toTopOf="@id/txt_price_title" />
+
+            <Button
+                android:id="@+id/btnAddSale"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Adcionar"
+                app:layout_constraintBottom_toBottomOf="@+id/txt_price_value"
+                app:layout_constraintEnd_toEndOf="@id/list_products"
+                app:layout_constraintTop_toTopOf="@+id/txt_price_value" />
+
+            <TextView
+                android:id="@+id/txt_estoque"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="5dp"
+                android:padding="4sp"
+                android:text="Estoque"
+                android:textSize="16sp"
+                app:layout_constraintBottom_toBottomOf="@+id/txt_productSearch"
+                app:layout_constraintEnd_toEndOf="parent" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </com.google.android.material.card.MaterialCardView>
+
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerView"
-        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:layout_marginStart="10dp"
-        android:layout_marginTop="10dp"
-        android:layout_marginEnd="10dp"
+        android:layout_margin="5dp"
+        android:background="@color/card_background"
+        android:paddingHorizontal="5dp"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
         app:layout_constraintBottom_toTopOf="@+id/btn_sale_save"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/btnAddSale"
-        tools:listitem="@layout/list_item"/>
+        app:layout_constraintTop_toBottomOf="@+id/cardResume"
+        tools:listitem="@layout/list_item" />
 
     <Button
         android:id="@+id/btn_sale_save"
@@ -134,17 +163,6 @@
         android:text="Salvar"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="@id/recyclerView" />
-
-    <TextView
-        android:id="@+id/txt_estoque"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="5dp"
-        android:padding="4sp"
-        android:text="Estoque"
-        android:textSize="16sp"
-        app:layout_constraintBottom_toBottomOf="@+id/txt_productSearch"
-        app:layout_constraintEnd_toEndOf="parent" />
 
     <TextView
         android:id="@+id/txt_sale_total"

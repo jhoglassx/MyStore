@@ -88,6 +88,7 @@ class BuyViewModel(private val buyRepo: BuyRepository, private val buyProdRepo: 
                 _buyTotalLiveData.value = 0.0
             }
         }
+
     }
 
     private fun setSellTotal(itemValue: Double) {

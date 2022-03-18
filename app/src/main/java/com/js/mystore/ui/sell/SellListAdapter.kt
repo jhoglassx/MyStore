@@ -6,35 +6,43 @@ import androidx.recyclerview.widget.RecyclerView
 import com.js.mystore.databinding.ListItemBinding
 import com.js.mystore.model.ProductsList
 
-class SellListAdapter(private val sales: List<ProductsList>) : RecyclerView.Adapter<SellListViewHolder>() {
+class SellListAdapter(private val sellList: List<ProductsList>) : RecyclerView.Adapter<SellListViewHolder>() {
 
-    private lateinit var mListener: OnItemClickListener
+    private lateinit var listener: OnItemClickListener
 
-    var selectedPosition = -1
+    private var selectedPosition = -1
 
     interface OnItemClickListener {
-        fun onItemClick(position: Int)
+        fun onItemClick(product: Long, productName: String)
     }
 
-    fun setOnItemClickListener(listener: OnItemClickListener) {
-        mListener = listener
+    fun setOnClickListener(listener: OnItemClickListener) {
+        this.listener = listener
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): SellListViewHolder {
         val itemView = ListItemBinding.inflate(LayoutInflater.from(parent.context), parent, false)
-        return SellListViewHolder(itemView, mListener)
+        return SellListViewHolder(itemView)
     }
 
     override fun onBindViewHolder(holder: SellListViewHolder, position: Int) {
-        holder.bind(sales[position])
+
+        val sell = sellList[position]
+        holder.bind(sell)
         holder.itemView.setBackgroundColor(android.graphics.Color.parseColor("#F9F9F9"))
 
         if (selectedPosition == position) {
-            holder.itemView.setBackgroundColor(android.graphics.Color.parseColor("#222016"))
+            holder.itemView.setBackgroundColor(android.graphics.Color.parseColor("##FFFFFF"))
         } else {
             holder.itemView.setBackgroundColor(android.graphics.Color.parseColor("#F9F9F9"))
         }
+
+        holder.itemView.setOnClickListener {
+            listener.onItemClick(sell.productId, sell.productName)
+            selectedPosition = position
+            notifyDataSetChanged()
+        }
     }
 
-    override fun getItemCount(): Int = sales.size
+    override fun getItemCount(): Int = sellList.size
 }

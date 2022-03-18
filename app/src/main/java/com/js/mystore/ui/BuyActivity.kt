@@ -58,15 +58,8 @@ class BuyActivity : AppCompatActivity() {
         // List product sell
         buyViewModel.listBuyLiveData.observe(this) { list ->
 
-            var adapter = BuyListAdapter(list)
+            val adapter = BuyListAdapter(list)
             binding.recyclerView.adapter = adapter
-
-            adapter.setOnItemClickListener(object : BuyListAdapter.OnItemClickListener {
-                override fun onItemClick(position: Int) {
-                    productId = position.toLong()
-                    Toast.makeText(this@BuyActivity, "Tost $position", Toast.LENGTH_SHORT).show()
-                }
-            })
         }
 
         binding.btnAddSale.setOnClickListener {
@@ -90,6 +83,7 @@ class BuyActivity : AppCompatActivity() {
         binding.buyToolbar.setNavigationOnClickListener { view ->
             val intent = Intent(view.context, MainActivity::class.java)
             view.context.startActivity(intent)
+            finish()
         }
     }
 }

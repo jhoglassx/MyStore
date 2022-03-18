@@ -11,6 +11,7 @@ import com.js.mystore.model.relations.SellProducts
 import com.js.mystore.repository.BuyRepository
 import com.js.mystore.repository.CompanyRepository
 import com.js.mystore.repository.SellRepository
+import com.js.mystore.utils.DateUtils.convertStringToDate
 import kotlinx.coroutines.launch
 
 class MainViewModel(
@@ -52,35 +53,52 @@ class MainViewModel(
         }
     }
 
-    fun getBuy() {
-        viewModelScope.launch() {
-            _listBuy.value = buyRepo.getBuyAll()
+    fun getBuy(dateInitial: String, dateEnd: String) {
 
-            _listBuy.value?.forEach {
+        val initial = convertStringToDate(dateInitial)
+        val final = convertStringToDate(dateEnd)
+
+        _buyTotal.value = 0.0
+
+        viewModelScope.launch() {
+            _listBuy.value = buyRepo.getBuyAll().filter {
+                it.updateAt!! >= initial && it.updateAt!! <= final
+            }.onEach {
                 _buyTotal.value = _buyTotal.value?.plus(it.valueBuy!!) ?: it.valueBuy
             }
         }
     }
 
-    fun getSell() {
-        viewModelScope.launch() {
-            _listSell.value = sellRepo.getSellAll()
+    fun getSell(dateInitial: String, dateEnd: String) {
+        val initial = convertStringToDate(dateInitial)
+        val final = convertStringToDate(dateEnd)
 
-            _listSell.value?.forEach {
+        _sellTotal.value = 0.0
+
+        viewModelScope.launch() {
+            _listSell.value = sellRepo.getSellAll().filter {
+                it.updateAt!! >= initial && it.updateAt!! <= final
+            }.onEach {
                 _sellTotal.value = _sellTotal.value?.plus(it.valueSale!!) ?: it.valueSale
             }
         }
     }
 
-    fun getSellProduct() {
+    fun getSellProduct(dateInitial: String, dateEnd: String) {
+
+        val initial = convertStringToDate(dateInitial)
+        val final = convertStringToDate(dateEnd)
+
         viewModelScope.launch() {
             _listSellProducts.value = sellRepo.getSellProductsAll().sortedByDescending {
                 it.sell.sellId
+            }.filter {
+                it.sell.updateAt!! >= initial && it.sell.updateAt!! <= final
             }
         }
     }
 
-    fun getSaldoBuyAndSell(valueBuy: Double, valueSell: Double) {
+    fun getTotalBuyAndSell(valueBuy: Double, valueSell: Double) {
         _buyAndSellTotal.value = valueSell - valueBuy
     }
 }

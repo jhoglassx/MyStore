@@ -6,6 +6,7 @@
     android:id="@+id/saleCard"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:backgroundTint="#006494"
     app:cardCornerRadius="0dp"
     android:layout_marginTop="5dp"
     >
@@ -19,6 +20,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="10dp"
             android:text="Blusa Azul"
+            android:textColor="@color/white"
             app:layout_constraintBottom_toBottomOf="@+id/txt_separador"
             app:layout_constraintStart_toEndOf="@+id/txt_separador"
             app:layout_constraintTop_toTopOf="@+id/txt_item_id" />
@@ -29,6 +31,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="5dp"
             android:text="Item"
+            android:textColor="@color/white"
             app:layout_constraintStart_toEndOf="@+id/txt_tralha"
             app:layout_constraintTop_toTopOf="@+id/txt_tralha" />
 
@@ -38,6 +41,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
             android:text="99,99"
+            android:textColor="@color/white"
             app:layout_constraintBottom_toBottomOf="@+id/txt_Item_price_title"
             app:layout_constraintStart_toEndOf="@+id/txt_Item_price_title"
             app:layout_constraintTop_toTopOf="@+id/txt_Item_price_title"
@@ -49,6 +53,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="50dp"
             android:text="Valor"
+            android:textColor="@color/white"
             app:layout_constraintBottom_toBottomOf="@+id/txt_item_qtd_value"
             app:layout_constraintStart_toEndOf="@+id/txt_item_qtd_value"
             app:layout_constraintTop_toTopOf="@+id/txt_item_qtd_value" />
@@ -60,6 +65,7 @@
             android:layout_marginTop="5dp"
             android:layout_marginBottom="5dp"
             android:text="Quantidade"
+            android:textColor="@color/white"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="@+id/txt_tralha"
             app:layout_constraintTop_toBottomOf="@+id/txt_item_id" />
@@ -70,6 +76,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="10dp"
             android:text="99"
+            android:textColor="@color/white"
             app:layout_constraintBottom_toBottomOf="@+id/txt_item_qtd_title"
             app:layout_constraintStart_toEndOf="@+id/txt_item_qtd_title"
             app:layout_constraintTop_toTopOf="@+id/txt_item_qtd_title" />
@@ -80,6 +87,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="10dp"
             android:text="#"
+            android:textColor="@color/white"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -89,6 +97,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="10dp"
             android:text="-"
+            android:textColor="@color/white"
             app:layout_constraintBottom_toBottomOf="@+id/txt_item_id"
             app:layout_constraintStart_toEndOf="@+id/txt_item_id" />
     </androidx.constraintlayout.widget.ConstraintLayout>

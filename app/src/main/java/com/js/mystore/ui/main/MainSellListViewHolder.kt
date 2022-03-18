@@ -16,6 +16,6 @@ class MainSellListViewHolder(private val binding: ListSellBinding) : RecyclerVie
 
         binding.txtItemId.text = sell.sell.sellId.toString()
         binding.txtItemQtdValue.text = prodQtd.toString()
-        binding.txtItemPriceValue.text = prodValue.toString()
+        binding.txtItemPriceValue.text = (prodQtd * prodValue).toString().replace('.', ',')
     }
 }

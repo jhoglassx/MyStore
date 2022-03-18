@@ -6,35 +6,17 @@ import androidx.recyclerview.widget.RecyclerView
 import com.js.mystore.databinding.ListItemBinding
 import com.js.mystore.model.ProductsList
 
-class BuyListAdapter(private val buy: List<ProductsList>) : RecyclerView.Adapter<BuyListViewHolder>() {
-
-    private lateinit var mListener: OnItemClickListener
-
-    var selectedPosition = -1
-
-    interface OnItemClickListener {
-        fun onItemClick(position: Int)
-    }
-
-    fun setOnItemClickListener(listener: OnItemClickListener) {
-        mListener = listener
-    }
+class BuyListAdapter(private val buyList: List<ProductsList>) : RecyclerView.Adapter<BuyListViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): BuyListViewHolder {
         val itemView = ListItemBinding.inflate(LayoutInflater.from(parent.context), parent, false)
-        return BuyListViewHolder(itemView, mListener)
+        return BuyListViewHolder(itemView)
     }
 
     override fun onBindViewHolder(holder: BuyListViewHolder, position: Int) {
-        holder.bind(buy[position])
-        holder.itemView.setBackgroundColor(android.graphics.Color.parseColor("#F9F9F9"))
-
-        if (selectedPosition == position) {
-            holder.itemView.setBackgroundColor(android.graphics.Color.parseColor("#222016"))
-        } else {
-            holder.itemView.setBackgroundColor(android.graphics.Color.parseColor("#F9F9F9"))
-        }
+        val buy = buyList[position]
+        holder.bind(buy)
     }
 
-    override fun getItemCount(): Int = buy.size
+    override fun getItemCount(): Int = buyList.size
 }

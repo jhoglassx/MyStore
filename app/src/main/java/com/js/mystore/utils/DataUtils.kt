@@ -1,6 +1,7 @@
 package com.js.mystore.utils
 
 import androidx.room.TypeConverter
+import java.text.SimpleDateFormat
 import java.time.ZoneId
 import java.time.ZonedDateTime
 import java.util.Date
@@ -18,5 +19,10 @@ object DateUtils {
 
     fun date(): Date? {
         return Date.from(ZonedDateTime.now(ZoneId.of("Etc/UTC")).toInstant())
+    }
+
+    fun convertStringToDate(date: String): Date? {
+        val dateFormat = SimpleDateFormat("dd/MM/yyyy")
+        return dateFormat.parse(date)
     }
 }

@@ -6,6 +6,7 @@
     android:id="@+id/productCard"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:backgroundTint="#006494"
     app:cardCornerRadius="0dp"
     android:layout_marginTop="5dp"
     >
@@ -22,6 +23,7 @@
             android:layout_marginStart="5dp"
             android:layout_marginTop="5dp"
             android:text="Blusa Azul"
+            android:textColor="@color/white"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -32,6 +34,7 @@
             android:layout_marginTop="5dp"
             android:layout_marginEnd="5dp"
             android:text="99"
+            android:textColor="@color/white"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent" />

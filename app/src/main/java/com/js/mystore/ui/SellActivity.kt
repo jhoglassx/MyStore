@@ -18,14 +18,22 @@ class SellActivity : AppCompatActivity() {
     private val binding get() = _binding
 
     var productId: Long? = null
-    var qtd: Int = 0
-    var value: Double = 0.0
+    private var qtd: Int = 0
+    private var value: Double = 0.0
     var prodName: String = ""
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         _binding = ActivitySellBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+        var productSearch = ""
+
+        sellViewModel.getProduct(productSearch)
+        binding.txtProductSearch.addTextChangedListener {
+            productSearch = binding.txtProductSearch.text.toString()
+            sellViewModel.getProduct(productSearch)
+        }
 
         sellViewModel.productLiveData.observe(this) { listProducts ->
             val listProdAdapter = ProductListAdapter(listProducts)
@@ -36,15 +44,9 @@ class SellActivity : AppCompatActivity() {
                 override fun onItemClick(product: Long, productName: String) {
                     productId = product
                     prodName = productName
-                    // Toast.makeText(this@SaleActivity, "Tost $product", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(this@SellActivity, prodName, Toast.LENGTH_SHORT).show()
                 }
             })
-        }
-        var productSearch = ""
-        sellViewModel.getProduct(productSearch)
-        binding.txtProductSearch.addTextChangedListener {
-            productSearch = binding.txtProductSearch.text.toString()
-            sellViewModel.getProduct(productSearch)
         }
 
         sellViewModel.saleIdLiveData.observe(this) { saleId ->
@@ -58,15 +60,8 @@ class SellActivity : AppCompatActivity() {
         // List product sell
         sellViewModel.listSellLiveData.observe(this) { list ->
 
-            var adapter = SellListAdapter(list)
+            val adapter = SellListAdapter(list)
             binding.recyclerView.adapter = adapter
-
-            adapter.setOnItemClickListener(object : SellListAdapter.OnItemClickListener {
-                override fun onItemClick(position: Int) {
-                    productId = position.toLong()
-                    Toast.makeText(this@SellActivity, "Tost $position", Toast.LENGTH_SHORT).show()
-                }
-            })
         }
 
         binding.btnAddSale.setOnClickListener {
@@ -90,6 +85,7 @@ class SellActivity : AppCompatActivity() {
         binding.sellToolbar.setNavigationOnClickListener { view ->
             val intent = Intent(view.context, MainActivity::class.java)
             view.context.startActivity(intent)
+            finish()
         }
     }
 }

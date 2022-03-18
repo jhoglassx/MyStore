@@ -8,18 +8,6 @@ import com.js.mystore.model.relations.SellProducts
 
 class MainSellListAdapter(private val sell: List<SellProducts>) : RecyclerView.Adapter<MainSellListViewHolder>() {
 
-    private lateinit var listener: OnItemClickListener
-
-    private var selectedPosition = -1
-
-    interface OnItemClickListener {
-        fun onItemClick(product: Long, productName: String)
-    }
-
-    fun setListener(listener: OnItemClickListener) {
-        this.listener = listener
-    }
-
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MainSellListViewHolder {
         val itemView = ListSellBinding.inflate(LayoutInflater.from(parent.context), parent, false)
         return MainSellListViewHolder(itemView)

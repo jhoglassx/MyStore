@@ -26,13 +26,13 @@ class ProductListAdapter(private val products: List<Product>) : RecyclerView.Ada
     }
 
     override fun onBindViewHolder(holder: ProductListViewHolder, position: Int) {
-        var product = products.get(position)
+        val product = products[position]
 
         holder.bind(product)
         holder.itemView.setBackgroundColor(android.graphics.Color.parseColor("#F9F9F9"))
 
         if (selectedPosition == position) {
-            holder.itemView.setBackgroundColor(android.graphics.Color.parseColor("#DBDBDB"))
+            holder.itemView.setBackgroundColor(android.graphics.Color.parseColor("#FFFFFF"))
         } else {
             holder.itemView.setBackgroundColor(android.graphics.Color.parseColor("#F9F9F9"))
         }

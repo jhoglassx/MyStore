@@ -7,7 +7,7 @@
     tools:context=".ui.ProductActivity">
 
     <com.google.android.material.appbar.AppBarLayout
-        android:id="@+id/buyTop"
+        android:id="@+id/productTop"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:layout_constraintEnd_toEndOf="parent"
@@ -26,54 +26,74 @@
 
     </com.google.android.material.appbar.AppBarLayout>
 
-    <EditText
-        android:id="@+id/txt_productName"
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/cardResume"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="10dp"
-        android:layout_marginTop="10dp"
-        android:layout_marginEnd="10dp"
-        android:ems="10"
-        android:inputType="textPersonName"
-        android:text="Nome do produto"
+        android:layout_margin="5dp"
+        android:backgroundTint="@color/card_background"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/buyTop" />
+        app:layout_constraintTop_toBottomOf="@+id/productTop">
 
-    <EditText
-        android:id="@+id/txt_productDescription"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="5dp"
-        android:ems="10"
-        android:gravity="start|top"
-        android:inputType="textMultiLine|text"
-        app:layout_constraintEnd_toEndOf="@id/txt_productName"
-        app:layout_constraintStart_toStartOf="@id/txt_productName"
-        app:layout_constraintTop_toBottomOf="@id/txt_productName" />
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
 
-    <Button
-        android:id="@+id/btn_addProduct"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="5dp"
-        android:text="Add Produto"
-        app:layout_constraintEnd_toEndOf="@id/txt_productDescription"
-        app:layout_constraintTop_toBottomOf="@id/txt_productDescription" />
+
+            <EditText
+                android:id="@+id/txt_productName"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="5dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginEnd="5dp"
+                android:ems="10"
+                android:hint="Nome do produto"
+                android:inputType="text"
+                android:textColor="@color/white"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <EditText
+                android:id="@+id/txt_productDescription"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:ems="10"
+                android:gravity="start|top"
+                android:hint="Descrição do produto"
+                android:textColor="@color/white"
+                android:inputType="textMultiLine|text"
+                app:layout_constraintEnd_toEndOf="@id/txt_productName"
+                app:layout_constraintStart_toStartOf="@id/txt_productName"
+                app:layout_constraintTop_toBottomOf="@id/txt_productName" />
+
+            <Button
+                android:id="@+id/btn_addProduct"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:text="Add Produto"
+                app:layout_constraintEnd_toEndOf="@id/txt_productDescription"
+                app:layout_constraintTop_toBottomOf="@id/txt_productDescription" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </com.google.android.material.card.MaterialCardView>
+
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerView_product"
-        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:layout_marginStart="10dp"
-        android:layout_marginTop="10dp"
-        android:layout_marginEnd="10dp"
-        android:layout_marginBottom="10dp"
+        android:layout_margin="5dp"
+        android:background="@color/card_background"
+        android:paddingHorizontal="5dp"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/btn_addProduct"
-        tools:listitem="@layout/list_products"/>
+        app:layout_constraintTop_toBottomOf="@+id/cardResume"
+        tools:listitem="@layout/list_products" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

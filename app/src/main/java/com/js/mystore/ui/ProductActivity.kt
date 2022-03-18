@@ -1,6 +1,8 @@
 package com.js.mystore.ui
 
+import android.content.Intent
 import android.os.Bundle
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.js.mystore.databinding.ActivityProductBinding
 import com.js.mystore.ui.product.ProductAdapter
@@ -29,7 +31,17 @@ class ProductActivity : AppCompatActivity() {
         binding.btnAddProduct.setOnClickListener {
             val productName = binding.txtProductName.text.toString()
             val productDesc = binding.txtProductDescription.text.toString()
-            productViewModel.setProduct(productName, productDesc)
+            if (productName.isNotEmpty() && productDesc.isNotEmpty()) {
+                productViewModel.setProduct(productName, productDesc)
+            } else {
+                Toast.makeText(this, "Favor Preencher os campos", Toast.LENGTH_SHORT).show()
+            }
+        }
+
+        binding.buyToolbar.setNavigationOnClickListener { view ->
+            val intent = Intent(view.context, MainActivity::class.java)
+            view.context.startActivity(intent)
+            finish()
         }
     }
 }
