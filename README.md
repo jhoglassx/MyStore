@@ -1,4 +1,4 @@
-# Aplication to control the sell and buy small businesses
+# Application to control the purchases and sales of a small store
 #Android #Kotlin #MVVM #Coroutines #Dependency injection #Koin #Roon
 
 ![image](https://user-images.githubusercontent.com/88597192/159323546-f71c116c-be65-45ac-9c72-c6a55544fcc5.png)
