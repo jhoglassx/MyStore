@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
      <item
         android:id="@+id/more"
-        android:title="Adcionar Produto"
+        android:title="Adicionar Produto"
         android:contentDescription="content_description_more"
         app:showAsAction="never" />
 

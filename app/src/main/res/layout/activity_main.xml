@@ -84,8 +84,8 @@
                 android:textColor="@color/white"
                 android:textSize="18sp"
                 app:layout_constraintBottom_toBottomOf="@+id/date_initial"
-                app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toStartOf="@+id/date_initial"
+                app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="@+id/date_initial" />
 
             <TextView
@@ -134,7 +134,6 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
-                android:textColor="@color/white"
                 android:fontFamily="sans-serif-black"
                 android:paddingStart="4dp"
                 android:paddingLeft="2dp"
@@ -145,6 +144,7 @@
                 android:shadowColor="#D2D2D2"
                 android:text="@string/vendas"
                 android:textAlignment="center"
+                android:textColor="#212121"
                 app:layout_constraintEnd_toEndOf="@+id/txt_sell"
                 app:layout_constraintStart_toStartOf="@+id/txt_sell"
                 app:layout_constraintTop_toTopOf="parent" />
@@ -209,7 +209,6 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
-                android:textColor="@color/white"
                 android:fontFamily="sans-serif-black"
                 android:paddingStart="4dp"
                 android:paddingLeft="2dp"
@@ -219,6 +218,7 @@
                 android:paddingBottom="2dp"
                 android:text="@string/compras"
                 android:textAlignment="center"
+                android:textColor="#212121"
                 app:layout_constraintEnd_toEndOf="@+id/txt_buy"
                 app:layout_constraintStart_toStartOf="@+id/txt_buy"
                 app:layout_constraintTop_toTopOf="parent" />
@@ -229,7 +229,6 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
                 android:fontFamily="sans-serif-black"
-                android:textColor="@color/white"
                 android:paddingStart="4dp"
                 android:paddingLeft="2dp"
                 android:paddingTop="2dp"
@@ -239,6 +238,7 @@
                 android:shadowColor="#D2D2D2"
                 android:text="@string/total"
                 android:textAlignment="center"
+                android:textColor="#212121"
                 app:layout_constraintEnd_toEndOf="@+id/txt_totalValue"
                 app:layout_constraintStart_toStartOf="@+id/txt_totalValue"
                 app:layout_constraintTop_toTopOf="parent" />

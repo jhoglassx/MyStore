@@ -69,6 +69,8 @@ class SellActivity : AppCompatActivity() {
                 qtd = binding.txtQtdValue.text.toString().toInt()
                 value = binding.txtPriceValue.text.toString().replace(',', '.').toDouble()
                 sellViewModel.setItemToListSell(productId!!, prodName, qtd, value)
+                binding.txtQtdValue.text = null
+                binding.txtPriceValue.text = null
             } else {
                 Toast.makeText(this@SellActivity, "Favor Selecionar um produto", Toast.LENGTH_LONG).show()
             }

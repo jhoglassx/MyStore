@@ -33,6 +33,8 @@ class ProductActivity : AppCompatActivity() {
             val productDesc = binding.txtProductDescription.text.toString()
             if (productName.isNotEmpty() && productDesc.isNotEmpty()) {
                 productViewModel.setProduct(productName, productDesc)
+                binding.txtProductName.text = null
+                binding.txtProductDescription.text = null
             } else {
                 Toast.makeText(this, "Favor Preencher os campos", Toast.LENGTH_SHORT).show()
             }

@@ -45,6 +45,7 @@
                 android:layout_height="wrap_content"
                 android:textSize="18sp"
                 android:text="@string/quantidade"
+                android:textColor="@color/white"
                 app:layout_constraintBottom_toBottomOf="@id/txt_qtd_value"
                 app:layout_constraintStart_toStartOf="@id/txt_productSearch"
                 app:layout_constraintTop_toTopOf="@id/txt_qtd_value" />
@@ -101,6 +102,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="10dp"
                 android:textSize="18sp"
+                android:textColor="@color/white"
                 android:text="@string/valor"
                 app:layout_constraintBottom_toBottomOf="@id/txt_qtd_value"
                 app:layout_constraintStart_toEndOf="@id/txt_qtd_value"
@@ -126,7 +128,7 @@
                 android:id="@+id/btnAddSale"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/adcionar"
+                android:text="@string/adicionar"
                 app:layout_constraintBottom_toBottomOf="@+id/txt_price_value"
                 app:layout_constraintEnd_toEndOf="@id/list_products"
                 app:layout_constraintTop_toTopOf="@+id/txt_price_value" />

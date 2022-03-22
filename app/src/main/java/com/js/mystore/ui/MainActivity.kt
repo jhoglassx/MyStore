@@ -97,7 +97,7 @@ class MainActivity : AppCompatActivity() {
         binding.mainToolbar.setOnMenuItemClickListener { menuItem ->
             when (menuItem.itemId) {
                 R.id.more -> {
-                    true
+                    false
                 }
                 else -> false
             }
